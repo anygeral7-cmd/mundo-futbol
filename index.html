@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Mundo Fútbol | La Guía Táctica y Pasión del Deporte Rey</title>
+  <meta name="description" content="El portal definitivo de fútbol: historia completa, reglas IFAB, cancha táctica interactiva con formaciones, cartas estilo EA FC de leyendas y estrellas, clubes ilustres y quiz futbolero.">
+
+  <!-- Favicon SVG dinámico de balón -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+
+  <!-- Google Fonts: Syne (impacto deportivo) & Plus Jakarta Sans (legibilidad moderna) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Estilos Principales -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Canvas para Confeti de Victoria en el Quiz -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Barra de Novedades Superior (Ticker) -->
+  <div class="top-ticker" id="topTicker">
+    <div class="ticker-inner">
+      <span class="ticker-item"><i class="fa-solid fa-futbol text-green"></i> <strong>MUNDO FÚTBOL</strong> • Tu portal táctico e histórico 2026</span>
+      <span class="ticker-divider">•</span>
+      <span class="ticker-item"><i class="fa-solid fa-earth-americas text-green"></i> 211 Federaciones FIFA conectadas por una sola pasión</span>
+      <span class="ticker-divider">•</span>
+      <span class="ticker-item"><i class="fa-solid fa-fire text-green"></i> Nueva Cancha Táctica con selector de formaciones 4-3-3, 4-4-2 y 3-5-2</span>
+      <span class="ticker-divider">•</span>
+      <span class="ticker-item"><i class="fa-solid fa-award text-green"></i> Cartas OVR de jugadores con estadísticas completas</span>
+    </div>
+  </div>
+
+  <!-- Barra de Navegación Principal -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Ir al inicio de Mundo Fútbol">
+        <span class="logo-icon"><i class="fa-solid fa-futbol"></i></span>
+        <span class="brand-text">MUNDO<span>FÚTBOL</span></span>
+      </a>
+
+      <!-- Menú de Navegación para Computadora -->
+      <nav class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a href="#historia" class="nav-link"><i class="fa-solid fa-landmark"></i> Historia</a>
+        <a href="#reglas" class="nav-link"><i class="fa-solid fa-book-open"></i> Reglas & Campo</a>
+        <a href="#posiciones" class="nav-link"><i class="fa-solid fa-chess-board"></i> Pizarra Táctica</a>
+        <a href="#jugadores" class="nav-link"><i class="fa-solid fa-id-card"></i> Jugadores</a>
+        <a href="#equipos" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Clubes</a>
+        <a href="#curiosidades" class="nav-link"><i class="fa-solid fa-lightbulb"></i> Curiosidades</a>
+        <a href="#quiz" class="nav-cta-btn"><i class="fa-solid fa-gamepad"></i> Reto Quiz</a>
+      </nav>
+
+      <!-- Botones de Utilidad: Sonido y Menú Móvil -->
+      <div class="nav-utilities">
+        <button class="sound-toggle-btn" id="soundToggle" aria-label="Activar o silenciar efectos de sonido">
+          <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+          <span class="sound-label">Audio</span>
+        </button>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú de navegación móvil">
+          <i class="fa-solid fa-bars" id="toggleIcon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Fondo semitransparente para cerrar menú móvil al tocar afuera -->
+  <div class="nav-mobile-overlay" id="navOverlay"></div>
+
+  <main>
+    <!-- ====================================================================
+         HERO SECTION (Portada Impactante y Dinámica)
+         ==================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-backdrop"></div>
+      <div class="hero-glow-orb hero-glow-1"></div>
+      <div class="hero-glow-orb hero-glow-2"></div>
+      <div class="hero-grid-mesh"></div>
+
+      <div class="hero-content">
+        <!-- Badge animado -->
+        <div class="badge-pill">
+          <span class="pulse-dot"></span>
+          <span>LA PLATAFORMA DEFINITIVA DEL FÚTBOL GLOBAL</span>
+        </div>
+
+        <!-- Título Grande y Rotador de Texto Juvenil -->
+        <h1 class="hero-title">
+          VIVE EL FÚTBOL CON <br>
+          <span class="highlight-green dynamic-word" id="dynamicWord">PASIÓN</span> TOTAL
+        </h1>
+
+        <p class="hero-subtitle">
+          El análisis más completo y visual sobre el deporte rey. Descubre orígenes milenarios, desglosa las leyes IFAB, experimenta con formaciones en tiempo real y explora los datos de los más grandes de la historia.
+        </p>
+
+        <!-- Botones de Acción Rápida -->
+        <div class="hero-actions">
+          <a href="#posiciones" class="btn btn-primary" id="heroPitchBtn">
+            <i class="fa-solid fa-futbol"></i> Cancha Táctica
+          </a>
+          <a href="#jugadores" class="btn btn-secondary">
+            <i class="fa-solid fa-star"></i> Ver Cartas OVR
+          </a>
+          <a href="#quiz" class="btn btn-outline" id="heroQuizBtn">
+            <i class="fa-solid fa-trophy"></i> Probar mi IQ Futbolero
+          </a>
+        </div>
+
+        <!-- Atajos Rápidos Móviles (Quick Tags) -->
+        <div class="hero-quick-chips">
+          <span class="chip-title"><i class="fa-solid fa-bolt"></i> Salto rápido:</span>
+          <a href="#historia" class="hero-chip">Historia</a>
+          <a href="#reglas" class="hero-chip">Reglas & VAR</a>
+          <a href="#posiciones" class="hero-chip">Pizarra 4-3-3</a>
+          <a href="#equipos" class="hero-chip">Equipos Top</a>
+          <a href="#curiosidades" class="hero-chip">Récords Insólitos</a>
+        </div>
+
+        <!-- Métricas y Estadísticas Globales Animadas -->
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-number count-up" data-target="4000">+4,000M</span>
+            <span class="stat-label">Hinchas en el Planeta</span>
+            <span class="stat-sub">El deporte #1 del mundo</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-number count-up" data-target="211">211</span>
+            <span class="stat-label">Federaciones FIFA</span>
+            <span class="stat-sub">Más países afiliados que la ONU</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-number">90'</span>
+            <span class="stat-label">Adrenalina en Cancha</span>
+            <span class="stat-sub">2 tiempos de 45 minutos</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-number count-up" data-target="15">15</span>
+            <span class="stat-label">Récord Champions</span>
+            <span class="stat-sub">Real Madrid en la cima</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#historia" class="scroll-indicator" aria-label="Bajar a la sección de historia">
+        <span>Explorar secciones</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN 1: HISTORIA DEL FÚTBOL (Línea de Tiempo Interactiva)
+         ==================================================================== -->
+    <section class="section history-section" id="historia">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-timeline"></i> LÍNEA DE TIEMPO OFICIAL</div>
+          <h2 class="section-title">Historia y Evolución del <span class="highlight-green">Fútbol</span></h2>
+          <p class="section-subtitle">Desde rituales y ejercicios militares en la antigüedad hasta la era digital con microchips y transmisiones 8K globales.</p>
+        </div>
+
+        <!-- Timeline Central Estilizada -->
+        <div class="timeline-container">
+          <!-- Nodo 1 -->
+          <div class="timeline-item left">
+            <div class="timeline-dot"><i class="fa-solid fa-shield"></i></div>
+            <article class="timeline-card">
+              <div class="timeline-img-wrap">
+                <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=800&q=80" alt="Pelota antigua de cuero en césped" loading="lazy">
+                <span class="timeline-year-badge">Siglo III a.C. - Orígenes</span>
+              </div>
+              <div class="timeline-body">
+                <h3>El Cuju y los Juegos Ancestrales</h3>
+                <p>En la China de la dinastía Han, soldados practicaban el <strong>Cuju</strong> ("patear con los pies") pateando una pelota de cuero rellena de plumas hacia una red sostenida por varas de bambú. Simultáneamente, en Grecia se jugaba el <strong>Episkyros</strong> y en Roma el <strong>Harpastum</strong>, confirmando que patear esferas es un instinto universal.</p>
+                <div class="timeline-footer">
+                  <span><i class="fa-solid fa-earth-asia text-green"></i> China Imperial & Grecia Clásica</span>
+                  <span class="tag-pill">Pioneros</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Nodo 2 -->
+          <div class="timeline-item right">
+            <div class="timeline-dot"><i class="fa-solid fa-file-signature"></i></div>
+            <article class="timeline-card">
+              <div class="timeline-img-wrap">
+                <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80" alt="Cancha de fútbol clásica en Inglaterra" loading="lazy">
+                <span class="timeline-year-badge">26 de Octubre de 1863</span>
+              </div>
+              <div class="timeline-body">
+                <h3>La Taberna Freemasons: El Parto Moderno</h3>
+                <p>En la Great Queen Street de Londres, representantes de 11 clubes y colegios ingleses fundaron <strong>The Football Association (The FA)</strong>. Decidieron prohibir cargar con las manos y el "hacking" (dar patadas a las espinillas), separando formal y para siempre el fútbol del rugby. Nació el fútbol de asociación.</p>
+                <div class="timeline-footer">
+                  <span><i class="fa-solid fa-landmark-flag text-green"></i> Londres, Reino Unido</span>
+                  <span class="tag-pill">Código Original</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Nodo 3 -->
+          <div class="timeline-item left">
+            <div class="timeline-dot"><i class="fa-solid fa-trophy"></i></div>
+            <article class="timeline-card">
+              <div class="timeline-img-wrap">
+                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80" alt="Trofeo de campeonato mundial de fútbol" loading="lazy">
+                <span class="timeline-year-badge">Julio de 1930</span>
+              </div>
+              <div class="timeline-body">
+                <h3>Uruguay 1930: La Primera Copa del Mundo</h3>
+                <p>El presidente de la FIFA, Jules Rimet, impulsó la primera cita mundialista en Montevideo. Trece selecciones viajaron en barco durante semanas para competir. <strong>Uruguay</strong> se proclamó primer campeón tras remontar a Argentina por 4-2 en un Estadio Centenario colmado con más de 90,000 espectadores.</p>
+                <div class="timeline-footer">
+                  <span><i class="fa-solid fa-flag text-green"></i> Montevideo, Uruguay</span>
+                  <span class="tag-pill">Copa Jules Rimet</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Nodo 4 -->
+          <div class="timeline-item right">
+            <div class="timeline-dot"><i class="fa-solid fa-microchip"></i></div>
+            <article class="timeline-card">
+              <div class="timeline-img-wrap">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80" alt="Estadio moderno iluminado con tecnología avanzada" loading="lazy">
+                <span class="timeline-year-badge">Siglo XXI - Presente</span>
+              </div>
+              <div class="timeline-body">
+                <h3>Alta Tecnología, Balones Inteligentes y VAR</h3>
+                <p>El fútbol hoy es un espectáculo global con microcámaras, sensores inerciales de 500Hz dentro del balón, detección semiautomatizada del fuera de juego y revisión por video (VAR). Con análisis de datos métricos (Expected Goals xG) y audiencias de miles de millones de espectadores en simultáneo.</p>
+                <div class="timeline-footer">
+                  <span><i class="fa-solid fa-satellite-dish text-green"></i> Era Digital Global</span>
+                  <span class="tag-pill">VAR & Big Data</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN 2: REGLAS BÁSICAS Y DIMENSIONES OFICIALES (IFAB)
+         ==================================================================== -->
+    <section class="section rules-section" id="reglas">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-scale-balanced"></i> LEYES DEL JUEGO IFAB</div>
+          <h2 class="section-title">Reglamento Oficial & <span class="highlight-green">Dimensiones</span></h2>
+          <p class="section-subtitle">Todo lo que necesitas dominar sobre las leyes del juego, las medidas reglamentarias y el funcionamiento del videoarbitraje.</p>
+        </div>
+
+        <!-- Infografía Visual de Medidas de Cancha -->
+        <div class="pitch-dimensions-box">
+          <div class="dimensions-header">
+            <h3><i class="fa-solid fa-ruler-combined text-green"></i> Dimensiones Oficiales FIFA / IFAB</h3>
+            <span class="badge-dim">Estándar Internacional</span>
+          </div>
+
+          <div class="dimensions-visual">
+            <div class="dim-stat">
+              <span class="dim-val">105 m</span>
+              <span class="dim-txt">Longitud de banda</span>
+            </div>
+            <div class="dim-stat">
+              <span class="dim-val">68 m</span>
+              <span class="dim-txt">Ancho de meta</span>
+            </div>
+            <div class="dim-stat">
+              <span class="dim-val">11 m</span>
+              <span class="dim-txt">Distancia al penal (12 yd)</span>
+            </div>
+            <div class="dim-stat">
+              <span class="dim-val">7.32 × 2.44 m</span>
+              <span class="dim-txt">Medidas del arco oficial</span>
+            </div>
+            <div class="dim-stat">
+              <span class="dim-val">9.15 m</span>
+              <span class="dim-txt">Radio del círculo central</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 Tarjetas de Reglas Básicas -->
+        <div class="rules-grid">
+          <!-- Regla 1 -->
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-icon"><i class="fa-solid fa-stopwatch"></i></div>
+              <span class="rule-num">01</span>
+            </div>
+            <h3 class="rule-title">Duración & Tiempos</h3>
+            <p class="rule-desc">Se disputan <strong>dos tiempos de 45 minutos</strong> cada uno (90' totales) más la compensación por tiempo perdido que determine el árbitro principal. El descanso reglamentario entre periodos es de 15 minutos exactos.</p>
+            <div class="rule-pill"><i class="fa-regular fa-clock"></i> 90' reglamentarios + añadido</div>
+          </div>
+
+          <!-- Regla 2 -->
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-icon"><i class="fa-solid fa-users"></i></div>
+              <span class="rule-num">02</span>
+            </div>
+            <h3 class="rule-title">Jugadores y Sustituciones</h3>
+            <p class="rule-desc">Cada equipo alinea a <strong>11 jugadores</strong> (uno de ellos guardameta obligatorio). En competiciones oficiales modernas se permiten hasta <strong>5 sustituciones</strong> en 3 ventanas de cambio para mantener la intensidad.</p>
+            <div class="rule-pill"><i class="fa-solid fa-user-group"></i> 11 en cancha • Mínimo 7</div>
+          </div>
+
+          <!-- Regla 3 -->
+          <div class="rule-card highlight-card">
+            <div class="rule-header">
+              <div class="rule-icon"><i class="fa-solid fa-flag"></i></div>
+              <span class="rule-num">03</span>
+            </div>
+            <h3 class="rule-title">El Fuera de Juego (Offside)</h3>
+            <p class="rule-desc">Un jugador está en fuera de juego si, en el instante exacto en que un compañero le pasa el balón, cualquier parte de su cabeza, cuerpo o piernas está <strong>más adelantada que el penúltimo defensor</strong> rival.</p>
+            <div class="rule-pill"><i class="fa-solid fa-triangle-exclamation"></i> Calibrado con líneas VAR 3D</div>
+          </div>
+
+          <!-- Regla 4 -->
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-icon"><i class="fa-solid fa-id-card-clip"></i></div>
+              <span class="rule-num">04</span>
+            </div>
+            <h3 class="rule-title">Tarjetas Amarilla y Roja</h3>
+            <p class="rule-desc">La <strong>Amarilla</strong> advierte conducta antideportiva o faltas reiteradas. La <strong>Roja</strong> (por doble amarilla o falta grave directa) expulsa al jugador definitivamente, dejando a su equipo con uno menos.</p>
+            <div class="rule-pill"><i class="fa-solid fa-square text-yellow"></i> Amarilla & <i class="fa-solid fa-square text-red"></i> Roja directa</div>
+          </div>
+
+          <!-- Regla 5 -->
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-icon"><i class="fa-solid fa-hand"></i></div>
+              <span class="rule-num">05</span>
+            </div>
+            <h3 class="rule-title">Faltas, Manos y Contactos</h3>
+            <p class="rule-desc">Tocar el balón de forma deliberada o con el brazo ocupando una posición antinatural que amplíe el cuerpo es infracción. Se sancionan con <strong>tiro libre directo</strong> (opción de tiro al arco) o indirecto según la falta.</p>
+            <div class="rule-pill"><i class="fa-solid fa-hand-fist"></i> Tiro Libre Directo / Indirecto</div>
+          </div>
+
+          <!-- Regla 6 -->
+          <div class="rule-card">
+            <div class="rule-header">
+              <div class="rule-icon"><i class="fa-solid fa-bullseye"></i></div>
+              <span class="rule-num">06</span>
+            </div>
+            <h3 class="rule-title">El Tiro Penal (Pena Máxima)</h3>
+            <p class="rule-desc">Se concede cuando se comete una falta sancionable con tiro libre directo dentro del área propia. El ejecutor se mide en solitario ante el portero a <strong>11 metros de distancia</strong>, sin invasión del resto.</p>
+            <div class="rule-pill"><i class="fa-solid fa-crosshairs"></i> Duelo a 11 Metros</div>
+          </div>
+        </div>
+
+        <!-- Protocolo VAR Especial -->
+        <div class="var-protocol-card">
+          <div class="var-header">
+            <div class="var-badge"><i class="fa-solid fa-tv"></i> PROTOCOLO VAR</div>
+            <h4>¿En qué 4 casos únicos puede intervenir el Árbitro Asistente de Video?</h4>
+          </div>
+          <div class="var-grid">
+            <div class="var-item">
+              <i class="fa-solid fa-futbol text-green"></i>
+              <strong>1. Goles</strong>
+              <span>Comprobar faltas previas, fuera de juego o si el balón traspasó la línea completa.</span>
+            </div>
+            <div class="var-item">
+              <i class="fa-solid fa-bullseye text-green"></i>
+              <strong>2. Penales</strong>
+              <span>Verificar si la falta fue dentro o fuera del área o si no existió contacto punible.</span>
+            </div>
+            <div class="var-item">
+              <i class="fa-solid fa-square text-red"></i>
+              <strong>3. Rojas Directas</strong>
+              <span>Agresiones violentas o cortar ocasión manifiesta de gol (no segundas amarillas).</span>
+            </div>
+            <div class="var-item">
+              <i class="fa-solid fa-user-check text-green"></i>
+              <strong>4. Confusión de Identidad</strong>
+              <span>Corregir si el árbitro amonesta o expulsa al jugador equivocado en cancha.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN 3: PIZARRA TÁCTICA Y POSICIONES (Cancha Interactiva 2D)
+         ==================================================================== -->
+    <section class="section pitch-section" id="posiciones">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-chess-board"></i> PIZARRA DEL DIRECTOR TÉCNICO</div>
+          <h2 class="section-title">Posiciones en la <span class="highlight-green">Cancha</span></h2>
+          <p class="section-subtitle">Selecciona una formación táctica y toca a cualquier jugador sobre el césped para analizar sus responsabilidades, cualidades y referentes históricos.</p>
+        </div>
+
+        <!-- Selector de Formaciones Tácticas -->
+        <div class="formation-selector-bar">
+          <span class="formation-label"><i class="fa-solid fa-sliders"></i> Esquema Táctico:</span>
+          <div class="formation-buttons">
+            <button class="formation-btn active" data-formation="433">
+              <i class="fa-solid fa-bolt"></i> 4-3-3 Ofensivo
+            </button>
+            <button class="formation-btn" data-formation="442">
+              <i class="fa-solid fa-shield-halved"></i> 4-4-2 Clásico
+            </button>
+            <button class="formation-btn" data-formation="352">
+              <i class="fa-solid fa-arrows-split-up-and-left"></i> 3-5-2 Carriles
+            </button>
+          </div>
+        </div>
+
+        <div class="pitch-layout">
+          <!-- Cancha Táctica de Césped con Líneas Oficiales -->
+          <div class="pitch-container" id="pitchBoard">
+            <div class="pitch-field" id="pitchField">
+              <!-- Textura y líneas oficiales -->
+              <div class="pitch-grass-stripes"></div>
+              
+              <!-- Línea central y círculo -->
+              <div class="pitch-line center-line"></div>
+              <div class="pitch-circle center-circle"></div>
+              <div class="pitch-spot center-spot"></div>
+
+              <!-- Esquinas / Corner arcs -->
+              <div class="corner-arc top-left"></div>
+              <div class="corner-arc top-right"></div>
+              <div class="corner-arc bottom-left"></div>
+              <div class="corner-arc bottom-right"></div>
+
+              <!-- Área Superior (Rival) -->
+              <div class="pitch-penalty-box top-box"></div>
+              <div class="pitch-penalty-arc top-arc"></div>
+              <div class="pitch-goal-area top-goal"></div>
+              <div class="pitch-goal-net top-net"></div>
+
+              <!-- Área Inferior (Propia) -->
+              <div class="pitch-penalty-box bottom-box"></div>
+              <div class="pitch-penalty-arc bottom-arc"></div>
+              <div class="pitch-goal-area bottom-goal"></div>
+              <div class="pitch-penalty-spot bottom-spot"></div>
+              <div class="pitch-goal-net bottom-net"></div>
+
+              <!-- Marcadores Interactivos de Jugadores (Pins Tácticos) -->
+              <!-- Portero -->
+              <button class="pitch-pin active" data-pos="gk" id="pin-gk" style="bottom: 8%; left: 50%;" aria-label="Ver Portero">
+                <span class="pin-badge">1</span>
+                <span class="pin-label">POR</span>
+              </button>
+
+              <!-- Defensas -->
+              <button class="pitch-pin" data-pos="cb1" id="pin-cb1" style="bottom: 24%; left: 33%;" aria-label="Defensa Central Izquierdo">
+                <span class="pin-badge">4</span>
+                <span class="pin-label">DFC</span>
+              </button>
+              <button class="pitch-pin" data-pos="cb2" id="pin-cb2" style="bottom: 24%; left: 67%;" aria-label="Defensa Central Derecho">
+                <span class="pin-badge">2</span>
+                <span class="pin-label">DFC</span>
+              </button>
+              <button class="pitch-pin" data-pos="lb" id="pin-lb" style="bottom: 33%; left: 14%;" aria-label="Lateral Izquierdo">
+                <span class="pin-badge">3</span>
+                <span class="pin-label">LI</span>
+              </button>
+              <button class="pitch-pin" data-pos="rb" id="pin-rb" style="bottom: 33%; left: 86%;" aria-label="Lateral Derecho">
+                <span class="pin-badge">22</span>
+                <span class="pin-label">LD</span>
+              </button>
+
+              <!-- Mediocampistas -->
+              <button class="pitch-pin" data-pos="mcd" id="pin-mcd" style="bottom: 46%; left: 50%;" aria-label="Mediocentro Defensivo">
+                <span class="pin-badge">5</span>
+                <span class="pin-label">MCD</span>
+              </button>
+              <button class="pitch-pin" data-pos="mc1" id="pin-mc1" style="bottom: 58%; left: 28%;" aria-label="Interior Izquierdo">
+                <span class="pin-badge">8</span>
+                <span class="pin-label">MC</span>
+              </button>
+              <button class="pitch-pin" data-pos="mc2" id="pin-mc2" style="bottom: 58%; left: 72%;" aria-label="Mediapunta / Interior Derecho">
+                <span class="pin-badge">10</span>
+                <span class="pin-label">MCO</span>
+              </button>
+
+              <!-- Delanteros -->
+              <button class="pitch-pin" data-pos="lw" id="pin-lw" style="bottom: 74%; left: 16%;" aria-label="Extremo Izquierdo">
+                <span class="pin-badge">11</span>
+                <span class="pin-label">EI</span>
+              </button>
+              <button class="pitch-pin" data-pos="cf" id="pin-cf" style="bottom: 84%; left: 50%;" aria-label="Centrodelantero">
+                <span class="pin-badge">9</span>
+                <span class="pin-label">DC</span>
+              </button>
+              <button class="pitch-pin" data-pos="rw" id="pin-rw" style="bottom: 74%; left: 84%;" aria-label="Extremo Derecho">
+                <span class="pin-badge">7</span>
+                <span class="pin-label">ED</span>
+              </button>
+            </div>
+
+            <div class="pitch-hint-mobile">
+              <i class="fa-solid fa-hand-pointer text-green"></i> Toca los números para ver el rol táctico
+            </div>
+          </div>
+
+          <!-- Panel de Información Táctica y Ficha de Jugador -->
+          <div class="position-info-panel" id="positionPanel">
+            <div class="panel-card" id="posDetails">
+              <div class="panel-card-glow"></div>
+              
+              <!-- Encabezado de Ficha -->
+              <div class="panel-header">
+                <span class="badge-role" id="posCategory">Guardameta</span>
+                <div class="panel-number-box">
+                  <span class="panel-dorsal-tag">DORSAL</span>
+                  <span class="panel-number" id="posDorsal">#1</span>
+                </div>
+              </div>
+
+              <h3 class="panel-title" id="posTitle">Portero / Arquero</h3>
+              <p class="panel-summary" id="posSummary">
+                El guardián absoluto de los tres palos. Es el único que puede usar las manos en su área. En el fútbol contemporáneo, además de salvar goles, inicia la construcción de juego con pases precisos y lidera el orden de la defensa.
+              </p>
+
+              <!-- Responsabilidades tácticas divididas -->
+              <div class="tactical-duties-grid">
+                <div class="duty-box">
+                  <span class="duty-title"><i class="fa-solid fa-shield-halved text-green"></i> Con Posesión</span>
+                  <p id="posInPossession">Inicia la salida de balón limpia desde el fondo y ofrece línea de pase segura a centrales.</p>
+                </div>
+                <div class="duty-box">
+                  <span class="duty-title"><i class="fa-solid fa-triangle-exclamation text-yellow"></i> Sin Posesión</span>
+                  <p id="posOutPossession">Achique en mano a mano, dominio del juego aéreo en córners y liderazgo vocal constante.</p>
+                </div>
+              </div>
+
+              <!-- Habilidades Clave -->
+              <div class="panel-skills">
+                <h4><i class="fa-solid fa-bolt text-green"></i> Atributos Indispensables</h4>
+                <div class="skills-tags" id="posSkills">
+                  <span>Reflejos felinos</span>
+                  <span>Juego con los pies</span>
+                  <span>Salidas aéreas</span>
+                  <span>Comando vocal del área</span>
+                </div>
+              </div>
+
+              <!-- Referentes Históricos -->
+              <div class="panel-legends">
+                <h4><i class="fa-solid fa-crown text-yellow"></i> Referentes Históricos</h4>
+                <p id="posLegends">Lev Yashin, Iker Casillas, Gianluigi Buffon, Manuel Neuer, Thibaut Courtois, Emiliano Martínez.</p>
+              </div>
+
+              <!-- Medidores de Estadísticas Tácticas -->
+              <div class="panel-stat-meter">
+                <div class="meter-item">
+                  <div class="meter-header">
+                    <span class="meter-label">Visión Táctica y Posicionamiento</span>
+                    <span class="meter-val" id="valTactics">94%</span>
+                  </div>
+                  <div class="meter-bar"><div class="meter-fill" id="meterTactics" style="width: 94%;"></div></div>
+                </div>
+                <div class="meter-item">
+                  <div class="meter-header">
+                    <span class="meter-label">Exigencia de Reflejos y Respuesta</span>
+                    <span class="meter-val" id="valPhysical">98%</span>
+                  </div>
+                  <div class="meter-bar"><div class="meter-fill" id="meterPhysical" style="width: 98%;"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botones Rápidos de Categoría Táctica -->
+            <div class="quick-positions">
+              <button class="pos-btn active" data-pos-cat="gk"><i class="fa-solid fa-shield-virus"></i> Porteros</button>
+              <button class="pos-btn" data-pos-cat="def"><i class="fa-solid fa-shield"></i> Defensas</button>
+              <button class="pos-btn" data-pos-cat="mid"><i class="fa-solid fa-compass"></i> Mediocampos</button>
+              <button class="pos-btn" data-pos-cat="att"><i class="fa-solid fa-fire"></i> Delanteros</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Tarjetas de Grupos de Posición -->
+        <div class="position-categories-grid">
+          <div class="pos-cat-card">
+            <div class="cat-icon"><i class="fa-solid fa-shield-virus"></i></div>
+            <h4>Portería</h4>
+            <p>Reflejos bajo palos, achique en mano a mano, dominio del juego aéreo y juego con los pies como arquero-líbero.</p>
+          </div>
+          <div class="pos-cat-card">
+            <div class="cat-icon"><i class="fa-solid fa-shield"></i></div>
+            <h4>Línea Defensiva</h4>
+            <p>Centrales que cortan balones aéreos e interceptan pases; laterales veloces con despliegue de ida y vuelta constante.</p>
+          </div>
+          <div class="pos-cat-card">
+            <div class="cat-icon"><i class="fa-solid fa-compass"></i></div>
+            <h4>Mediocampo</h4>
+            <p>La sala de máquinas. Recuperan el balón, dictan el compás del partido y filtran asistencias letales al área rival.</p>
+          </div>
+          <div class="pos-cat-card">
+            <div class="cat-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+            <h4>Delantera</h4>
+            <p>Los definidores. Desmarques rápidos a las espaldas de la zaga, regates desconcertantes y frialdad asesina de cara al gol.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN 4: JUGADORES DESTACADOS (Cartas EA FC / Ultimate OVR)
+         ==================================================================== -->
+    <section class="section players-section" id="jugadores">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-ranking-star"></i> ESTRELLAS GLOBALES & LEYENDAS</div>
+          <h2 class="section-title">Jugadores <span class="highlight-green">Destacados</span></h2>
+          <p class="section-subtitle">Cartas de rendimiento con valoraciones globales (OVR), estadísticas FIFA y la jugada insignia que los consagró en el Olimpo.</p>
+        </div>
+
+        <!-- Filtros de Jugadores -->
+        <div class="filter-controls">
+          <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-globe"></i> Todos</button>
+          <button class="filter-btn" data-filter="leyendas"><i class="fa-solid fa-crown text-yellow"></i> Leyendas Eternas</button>
+          <button class="filter-btn" data-filter="actuales"><i class="fa-solid fa-fire text-green"></i> Estrellas Actuales</button>
+          <button class="filter-btn" data-filter="jovenes"><i class="fa-solid fa-bolt text-blue"></i> Nuevas Joyas</button>
+        </div>
+
+        <!-- Grid de Cartas Estilo OVR -->
+        <div class="players-grid" id="playersGrid">
+          
+          <!-- Jugador 1: Messi -->
+          <article class="player-card ovr-gold" data-category="actuales leyendas">
+            <div class="card-glow-border"></div>
+            <div class="player-img-box">
+              <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=80" alt="Lionel Messi celebrando gol" loading="lazy">
+              <!-- Badge OVR -->
+              <div class="ovr-rating-box">
+                <span class="ovr-number">94</span>
+                <span class="ovr-pos">ED/MCO</span>
+                <span class="ovr-nation">ARG</span>
+              </div>
+              <span class="player-number">#10</span>
+              <span class="player-badge legend">GOAT ETERNO</span>
+            </div>
+            <div class="player-info">
+              <div class="player-country"><i class="fa-solid fa-flag"></i> Argentina • Inter Miami / FC Barcelona</div>
+              <h3 class="player-name">Lionel Messi</h3>
+              <span class="player-role">Extremo / Mediapunta Creador</span>
+              <p class="player-bio">El futbolista más laureado de la historia con 45 títulos oficiales. Conducción con el balón cosido a la zurda, visión milimétrica y campeón del Mundial de Qatar 2022.</p>
+              
+              <!-- Mini Atributos FIFA -->
+              <div class="player-fifa-stats">
+                <div class="f-stat"><span class="f-label">RIT</span><span class="f-val">87</span></div>
+                <div class="f-stat"><span class="f-label">TIR</span><span class="f-val">93</span></div>
+                <div class="f-stat"><span class="f-label">PAS</span><span class="f-val">95</span></div>
+                <div class="f-stat"><span class="f-label">REG</span><span class="f-val">96</span></div>
+                <div class="f-stat"><span class="f-label">DEF</span><span class="f-val">38</span></div>
+                <div class="f-stat"><span class="f-label">FÍS</span><span class="f-val">72</span></div>
+              </div>
+
+              <div class="player-achievements">
+                <div class="achieve-item"><i class="fa-solid fa-trophy text-yellow"></i> 8 Balones de Oro (Récord)</div>
+                <div class="achieve-item"><i class="fa-solid fa-earth-americas text-green"></i> 1 Copa del Mundo FIFA 2022</div>
+                <div class="achieve-item"><i class="fa-solid fa-award text-yellow"></i> 6 Botas de Oro Europeas</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Jugador 2: Cristiano Ronaldo -->
+          <article class="player-card ovr-gold" data-category="actuales leyendas">
+            <div class="card-glow-border"></div>
+            <div class="player-img-box">
+              <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80" alt="Cristiano Ronaldo en campo de juego con luces" loading="lazy">
+              <div class="ovr-rating-box">
+                <span class="ovr-number">93</span>
+                <span class="ovr-pos">DC/EI</span>
+                <span class="ovr-nation">POR</span>
+              </div>
+              <span class="player-number">#7</span>
+              <span class="player-badge star">EL BICHO</span>
+            </div>
+            <div class="player-info">
+              <div class="player-country"><i class="fa-solid fa-flag"></i> Portugal • Real Madrid / Al Nassr</div>
+              <h3 class="player-name">Cristiano Ronaldo</h3>
+              <span class="player-role">Delantero Centro / Extremo</span>
+              <p class="player-bio">El máximo goleador de todos los tiempos en partidos oficiales (+900 goles). Máquina atlética insaciable con salto de 2.6m, remate ambidiestro y 5 títulos de UEFA Champions League.</p>
+              
+              <div class="player-fifa-stats">
+                <div class="f-stat"><span class="f-label">RIT</span><span class="f-val">88</span></div>
+                <div class="f-stat"><span class="f-label">TIR</span><span class="f-val">95</span></div>
+                <div class="f-stat"><span class="f-label">PAS</span><span class="f-val">81</span></div>
+                <div class="f-stat"><span class="f-label">REG</span><span class="f-val">87</span></div>
+                <div class="f-stat"><span class="f-label">DEF</span><span class="f-val">35</span></div>
+                <div class="f-stat"><span class="f-label">FÍS</span><span class="f-val">86</span></div>
+              </div>
+
+              <div class="player-achievements">
+                <div class="achieve-item"><i class="fa-solid fa-trophy text-yellow"></i> 5 Balones de Oro</div>
+                <div class="achieve-item"><i class="fa-solid fa-futbol text-green"></i> +900 Goles oficiales oficiales</div>
+                <div class="achieve-item"><i class="fa-solid fa-medal text-yellow"></i> 5 UEFA Champions League</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Jugador 3: Pelé -->
+          <article class="player-card ovr-icon" data-category="leyendas">
+            <div class="card-glow-border"></div>
+            <div class="player-img-box">
+              <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80" alt="Pelota clásica y homenaje a Pelé" loading="lazy">
+              <div class="ovr-rating-box">
+                <span class="ovr-number">95</span>
+                <span class="ovr-pos">DEL</span>
+                <span class="ovr-nation">BRA</span>
+              </div>
+              <span class="player-number">#10</span>
+              <span class="player-badge legend">O REI</span>
+            </div>
+            <div class="player-info">
+              <div class="player-country"><i class="fa-solid fa-flag"></i> Brasil • Santos FC / New York Cosmos</div>
+              <h3 class="player-name">Pelé (Edson Arantes)</h3>
+              <span class="player-role">Delantero Universal</span>
+              <p class="player-bio">El único futbolista en conquistar 3 Copas Mundiales de la FIFA (1958, 1962, 1970). Con apenas 17 años maravilló en Suecia e inventó prácticamente cada finta del fútbol moderno.</p>
+              
+              <div class="player-fifa-stats">
+                <div class="f-stat"><span class="f-label">RIT</span><span class="f-val">95</span></div>
+                <div class="f-stat"><span class="f-label">TIR</span><span class="f-val">96</span></div>
+                <div class="f-stat"><span class="f-label">PAS</span><span class="f-val">90</span></div>
+                <div class="f-stat"><span class="f-label">REG</span><span class="f-val">95</span></div>
+                <div class="f-stat"><span class="f-label">DEF</span><span class="f-val">56</span></div>
+                <div class="f-stat"><span class="f-label">FÍS</span><span class="f-val">82</span></div>
+              </div>
+
+              <div class="player-achievements">
+                <div class="achieve-item"><i class="fa-solid fa-crown text-yellow"></i> 3 Copas del Mundo (Único en la historia)</div>
+                <div class="achieve-item"><i class="fa-solid fa-futbol text-green"></i> 1,283 Goles totales</div>
+                <div class="achieve-item"><i class="fa-solid fa-star text-yellow"></i> Jugador del Siglo de la FIFA</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Jugador 4: Maradona -->
+          <article class="player-card ovr-icon" data-category="leyendas">
+            <div class="card-glow-border"></div>
+            <div class="player-img-box">
+              <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80" alt="Hinchada celebrando la magia de Maradona" loading="lazy">
+              <div class="ovr-rating-box">
+                <span class="ovr-number">95</span>
+                <span class="ovr-pos">MCO</span>
+                <span class="ovr-nation">ARG</span>
+              </div>
+              <span class="player-number">#10</span>
+              <span class="player-badge legend">EL PIBE DE ORO</span>
+            </div>
+            <div class="player-info">
+              <div class="player-country"><i class="fa-solid fa-flag"></i> Argentina • Napoli / Boca Juniors</div>
+              <h3 class="player-name">Diego Armando Maradona</h3>
+              <span class="player-role">Enganche / Creador Absoluto</span>
+              <p class="player-bio">Genio rebelde y creador del "Gol del Siglo" eludiendo a media Inglaterra en México 1986. Transformó al humilde SSC Napoli en campeón de Italia y conquistador de Europa.</p>
+              
+              <div class="player-fifa-stats">
+                <div class="f-stat"><span class="f-label">RIT</span><span class="f-val">91</span></div>
+                <div class="f-stat"><span class="f-label">TIR</span><span class="f-val">93</span></div>
+                <div class="f-stat"><span class="f-label">PAS</span><span class="f-val">94</span></div>
+                <div class="f-stat"><span class="f-label">REG</span><span class="f-val">97</span></div>
+                <div class="f-stat"><span class="f-label">DEF</span><span class="f-val">42</span></div>
+                <div class="f-stat"><span class="f-label">FÍS</span><span class="f-val">76</span></div>
+              </div>
+
+              <div class="player-achievements">
+                <div class="achieve-item"><i class="fa-solid fa-trophy text-yellow"></i> Campeón del Mundo México 1986</div>
+                <div class="achieve-item"><i class="fa-solid fa-bolt text-green"></i> El Gol del Siglo (Récord FIFA)</div>
+                <div class="achieve-item"><i class="fa-solid fa-shield text-yellow"></i> 2 Scudettos históricos con Napoli</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Jugador 5: Mbappé -->
+          <article class="player-card ovr-gold" data-category="actuales">
+            <div class="card-glow-border"></div>
+            <div class="player-img-box">
+              <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=800&q=80" alt="Botines veloces de Mbappé" loading="lazy">
+              <div class="ovr-rating-box">
+                <span class="ovr-number">92</span>
+                <span class="ovr-pos">DC/EI</span>
+                <span class="ovr-nation">FRA</span>
+              </div>
+              <span class="player-number">#9</span>
+              <span class="player-badge star">RELÁMPAGO</span>
+            </div>
+            <div class="player-info">
+              <div class="player-country"><i class="fa-solid fa-flag"></i> Francia • Real Madrid / PSG</div>
+              <h3 class="player-name">Kylian Mbappé</h3>
+              <span class="player-role">Delantero Centro / Extremo</span>
+              <p class="player-bio">Velocidad supersónica capaz de alcanzar los 38 km/h. Campeón del mundo con 19 años en Rusia 2018 y autor de un legendario triplete en la final de Qatar 2022.</p>
+              
+              <div class="player-fifa-stats">
+                <div class="f-stat"><span class="f-label">RIT</span><span class="f-val">97</span></div>
+                <div class="f-stat"><span class="f-label">TIR</span><span class="f-val">90</span></div>
+                <div class="f-stat"><span class="f-label">PAS</span><span class="f-val">82</span></div>
+                <div class="f-stat"><span class="f-label">REG</span><span class="f-val">92</span></div>
+                <div class="f-stat"><span class="f-label">DEF</span><span class="f-val">36</span></div>
+                <div class="f-stat"><span class="f-label">FÍS</span><span class="f-val">78</span></div>
+              </div>
+
+              <div class="player-achievements">
+                <div class="achieve-item"><i class="fa-solid fa-trophy text-yellow"></i> 1 Copa del Mundo (Rusia 2018)</div>
+                <div class="achieve-item"><i class="fa-solid fa-bolt text-green"></i> Bota de Oro Mundial 2022 (8 goles)</div>
+                <div class="achieve-item"><i class="fa-solid fa-crown text-yellow"></i> Estrella Galáctica Real Madrid</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Jugador 6: Haaland -->
+          <article class="player-card ovr-gold" data-category="actuales">
+            <div class="card-glow-border"></div>
+            <div class="player-img-box">
+              <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=800&q=80" alt="Remate letal de Haaland" loading="lazy">
+              <div class="ovr-rating-box">
+                <span class="ovr-number">91</span>
+                <span class="ovr-pos">DC</span>
+                <span class="ovr-nation">NOR</span>
+              </div>
+              <span class="player-number">#9</span>
+              <span class="player-badge star">EL ANDROIDE</span>
+            </div>
+            <div class="player-info">
+              <div class="player-country"><i class="fa-solid fa-flag"></i> Noruega • Manchester City</div>
+              <h3 class="player-name">Erling Haaland</h3>
+              <span class="player-role">Centrodelantero Puro</span>
+              <p class="player-bio">Un depredador terminal dentro del área. Batió el récord histórico de goles en una sola temporada de Premier League (36 goles) y guió al City a su ansiado Triplete europeo.</p>
+              
+              <div class="player-fifa-stats">
+                <div class="f-stat"><span class="f-label">RIT</span><span class="f-val">89</span></div>
+                <div class="f-stat"><span class="f-label">TIR</span><span class="f-val">94</span></div>
+                <div class="f-stat"><span class="f-label">PAS</span><span class="f-val">68</span></div>
+                <div class="f-stat"><span class="f-label">REG</span><span class="f-val">81</span></div>
+                <div class="f-stat"><span class="f-label">DEF</span><span class="f-val">45</span></div>
+                <div class="f-stat"><span class="f-label">FÍS</span><span class="f-val">90</span></div>
+              </div>
+
+              <div class="player-achievements">
+                <div class="achieve-item"><i class="fa-solid fa-trophy text-yellow"></i> Triplete Histórico con Man City</div>
+                <div class="achieve-item"><i class="fa-solid fa-futbol text-green"></i> Récord Premier League (36 goles)</div>
+                <div class="achieve-item"><i class="fa-solid fa-medal text-yellow"></i> Bota de Oro Europea 2023</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Jugador 7: Lamine Yamal -->
+          <article class="player-card ovr-diamond" data-category="jovenes">
+            <div class="card-glow-border"></div>
+            <div class="player-img-box">
+              <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=800&q=80" alt="Césped verde y la frescura de Lamine Yamal" loading="lazy">
+              <div class="ovr-rating-box">
+                <span class="ovr-number">88</span>
+                <span class="ovr-pos">ED</span>
+                <span class="ovr-nation">ESP</span>
+              </div>
+              <span class="player-number">#19</span>
+              <span class="player-badge young">GOLDEN PRODIGY</span>
+            </div>
+            <div class="player-info">
+              <div class="player-country"><i class="fa-solid fa-flag"></i> España • FC Barcelona</div>
+              <h3 class="player-name">Lamine Yamal</h3>
+              <span class="player-role">Extremo Derecho Invertido</span>
+              <p class="player-bio">El talento joven más deslumbrante de la nueva era. Con solo 16-17 años lideró a España hacia la conquista de la Eurocopa 2024 con regates inverosímiles y un golazo ante Francia.</p>
+              
+              <div class="player-fifa-stats">
+                <div class="f-stat"><span class="f-label">RIT</span><span class="f-val">91</span></div>
+                <div class="f-stat"><span class="f-label">TIR</span><span class="f-val">82</span></div>
+                <div class="f-stat"><span class="f-label">PAS</span><span class="f-val">86</span></div>
+                <div class="f-stat"><span class="f-label">REG</span><span class="f-val">93</span></div>
+                <div class="f-stat"><span class="f-label">DEF</span><span class="f-val">34</span></div>
+                <div class="f-stat"><span class="f-label">FÍS</span><span class="f-val">65</span></div>
+              </div>
+
+              <div class="player-achievements">
+                <div class="achieve-item"><i class="fa-solid fa-trophy text-yellow"></i> Campeón Eurocopa 2024</div>
+                <div class="achieve-item"><i class="fa-solid fa-award text-green"></i> Mejor Jugador Joven Euro 2024</div>
+                <div class="achieve-item"><i class="fa-solid fa-star text-yellow"></i> Trofeo Kopa y joya de La Masia</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Jugador 8: Jude Bellingham -->
+          <article class="player-card ovr-diamond" data-category="actuales jovenes">
+            <div class="card-glow-border"></div>
+            <div class="player-img-box">
+              <img src="https://images.unsplash.com/photo-1489944445391-116812836566?auto=format&fit=crop&w=800&q=80" alt="Estadio lleno aclamando a Bellingham" loading="lazy">
+              <div class="ovr-rating-box">
+                <span class="ovr-number">90</span>
+                <span class="ovr-pos">MC/MCO</span>
+                <span class="ovr-nation">ENG</span>
+              </div>
+              <span class="player-number">#5</span>
+              <span class="player-badge young">LÍDER TOTAL</span>
+            </div>
+            <div class="player-info">
+              <div class="player-country"><i class="fa-solid fa-flag"></i> Inglaterra • Real Madrid</div>
+              <h3 class="player-name">Jude Bellingham</h3>
+              <span class="player-role">Centrocampista 'Box-to-Box'</span>
+              <p class="player-bio">Elegancia británica y liderazgo maduro impropio de su edad. En su primera temporada de blanco conquistó Liga y Champions siendo el máximo goleador decisivo en minutos finales.</p>
+              
+              <div class="player-fifa-stats">
+                <div class="f-stat"><span class="f-label">RIT</span><span class="f-val">82</span></div>
+                <div class="f-stat"><span class="f-label">TIR</span><span class="f-val">87</span></div>
+                <div class="f-stat"><span class="f-label">PAS</span><span class="f-val">88</span></div>
+                <div class="f-stat"><span class="f-label">REG</span><span class="f-val">89</span></div>
+                <div class="f-stat"><span class="f-label">DEF</span><span class="f-val">78</span></div>
+                <div class="f-stat"><span class="f-label">FÍS</span><span class="f-val">84</span></div>
+              </div>
+
+              <div class="player-achievements">
+                <div class="achieve-item"><i class="fa-solid fa-trophy text-yellow"></i> Champions League 2024</div>
+                <div class="achieve-item"><i class="fa-solid fa-medal text-green"></i> Mejor Jugador de LaLiga 23/24</div>
+                <div class="achieve-item"><i class="fa-solid fa-award text-yellow"></i> Ganador Trofeo Golden Boy</div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN 5: EQUIPOS Y CLUBES FAMOSOS
+         ==================================================================== -->
+    <section class="section teams-section" id="equipos">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-shield-cat"></i> TEMPLOS DE LA GLORIA</div>
+          <h2 class="section-title">Equipos <span class="highlight-green">Famosos</span> del Mundo</h2>
+          <p class="section-subtitle">Vitrinas repletas de historia, estadios míticos y aficiones multitudinarias que cantan sin descanso.</p>
+        </div>
+
+        <div class="teams-grid">
+          
+          <!-- Real Madrid -->
+          <div class="team-card card-glow-hover">
+            <div class="team-header">
+              <div class="team-badge-icon"><i class="fa-solid fa-crown text-yellow"></i></div>
+              <div class="team-titles-pill">15 Champions League</div>
+            </div>
+            <h3 class="team-name">Real Madrid C.F.</h3>
+            <span class="team-origin"><i class="fa-solid fa-location-dot text-green"></i> Madrid, España • Santiago Bernabéu (84,000 cap.)</span>
+            <p class="team-desc">El club más ganador del planeta. Famoso por sus noches mágicas europeas, remontadas imposibles y un gen competitivo que nunca se rinde ante la adversidad.</p>
+            <div class="team-motto">"¡Hasta el final, vamos Real!"</div>
+            <div class="team-stats-row">
+              <div class="t-stat"><strong>36</strong> <span>Ligas</span></div>
+              <div class="t-stat"><strong>15</strong> <span>Champions</span></div>
+              <div class="t-stat"><strong>5</strong> <span>Mundiales</span></div>
+            </div>
+          </div>
+
+          <!-- FC Barcelona -->
+          <div class="team-card card-glow-hover">
+            <div class="team-header">
+              <div class="team-badge-icon"><i class="fa-solid fa-palette text-blue"></i></div>
+              <div class="team-titles-pill">Sextete de 2009</div>
+            </div>
+            <h3 class="team-name">F.C. Barcelona</h3>
+            <span class="team-origin"><i class="fa-solid fa-location-dot text-green"></i> Barcelona, España • Spotify Camp Nou (105,000 cap.)</span>
+            <p class="team-desc">Cuna del 'Tiki-Taka' y de la academia La Masia. Una filosofía basada en la posesión de balón, triangulaciones y el fútbol asociativo liderado históricamente por Cruyff y Messi.</p>
+            <div class="team-motto">"Més que un club"</div>
+            <div class="team-stats-row">
+              <div class="t-stat"><strong>27</strong> <span>Ligas</span></div>
+              <div class="t-stat"><strong>5</strong> <span>Champions</span></div>
+              <div class="t-stat"><strong>31</strong> <span>Copas Rey</span></div>
+            </div>
+          </div>
+
+          <!-- Manchester City -->
+          <div class="team-card card-glow-hover">
+            <div class="team-header">
+              <div class="team-badge-icon"><i class="fa-solid fa-ship text-blue"></i></div>
+              <div class="team-titles-pill">Triplete Histórico</div>
+            </div>
+            <h3 class="team-name">Manchester City</h3>
+            <span class="team-origin"><i class="fa-solid fa-location-dot text-green"></i> Manchester, Inglaterra • Etihad Stadium (53,400 cap.)</span>
+            <p class="team-desc">La máquina del fútbol posicional moderno bajo el mando de Pep Guardiola. Conquistador de 4 Premier Leagues consecutivas y del Triplete continental europeo de 2023.</p>
+            <div class="team-motto">"Superbia in Proelio"</div>
+            <div class="team-stats-row">
+              <div class="t-stat"><strong>10</strong> <span>Premiers</span></div>
+              <div class="t-stat"><strong>1</strong> <span>Champions</span></div>
+              <div class="t-stat"><strong>100</strong> <span>Pts Récord</span></div>
+            </div>
+          </div>
+
+          <!-- Bayern Múnich -->
+          <div class="team-card card-glow-hover">
+            <div class="team-header">
+              <div class="team-badge-icon"><i class="fa-solid fa-gears text-red"></i></div>
+              <div class="team-titles-pill">El Gigante Bávaro</div>
+            </div>
+            <h3 class="team-name">F.C. Bayern Múnich</h3>
+            <span class="team-origin"><i class="fa-solid fa-location-dot text-green"></i> Múnich, Alemania • Allianz Arena (75,000 cap.)</span>
+            <p class="team-desc">Símbolo germano de disciplina inquebrantable, ritmo demoledor y eficiencia goleadora. Ganador de 2 sextetes y dominador histórico incontestable de la Bundesliga.</p>
+            <div class="team-motto">"Mia san Mia"</div>
+            <div class="team-stats-row">
+              <div class="t-stat"><strong>33</strong> <span>Bundesligas</span></div>
+              <div class="t-stat"><strong>6</strong> <span>Champions</span></div>
+              <div class="t-stat"><strong>20</strong> <span>DFB Pokal</span></div>
+            </div>
+          </div>
+
+          <!-- Boca Juniors -->
+          <div class="team-card card-glow-hover">
+            <div class="team-header">
+              <div class="team-badge-icon"><i class="fa-solid fa-volcano text-yellow"></i></div>
+              <div class="team-titles-pill">La Mitad Más Uno</div>
+            </div>
+            <h3 class="team-name">C.A. Boca Juniors</h3>
+            <span class="team-origin"><i class="fa-solid fa-location-dot text-green"></i> Buenos Aires, Argentina • Estadio La Bombonera</span>
+            <p class="team-desc">El club con el estadio más vibrante del mundo ("La Bombonera no tiembla, late"). Famoso por su mística copera sudamericana con 6 Libertadores y 3 Copas Intercontinentales.</p>
+            <div class="team-motto">"Esto es Boca"</div>
+            <div class="team-stats-row">
+              <div class="t-stat"><strong>35</strong> <span>Ligas Arg</span></div>
+              <div class="t-stat"><strong>6</strong> <span>Libertadores</span></div>
+              <div class="t-stat"><strong>3</strong> <span>Mundiales</span></div>
+            </div>
+          </div>
+
+          <!-- Selección de Brasil -->
+          <div class="team-card highlight-card card-glow-hover">
+            <div class="team-header">
+              <div class="team-badge-icon"><i class="fa-solid fa-earth-americas text-yellow"></i></div>
+              <div class="team-titles-pill">Pentacampeón Mundial</div>
+            </div>
+            <h3 class="team-name">Selección de Brasil (Canarinha)</h3>
+            <span class="team-origin"><i class="fa-solid fa-location-dot text-green"></i> Confederación Brasileña • Estadio Maracaná</span>
+            <p class="team-desc">La cuna sagrada del Jogo Bonito. La única selección en el planeta que ha disputado cada edición de la Copa Mundial y la máxima ganadora histórica con 5 estrellas bordadas.</p>
+            <div class="team-motto">"Ordem e Progresso no Campo"</div>
+            <div class="team-stats-row">
+              <div class="t-stat"><strong>5</strong> <span>Mundiales</span></div>
+              <div class="t-stat"><strong>9</strong> <span>Copas América</span></div>
+              <div class="t-stat"><strong>100%</strong> <span>En Mundiales</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN 6: DATOS CURIOSOS & SABÍAS QUÉ (Cards Interactivas)
+         ==================================================================== -->
+    <section class="section trivia-section" id="curiosidades">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-lightbulb"></i> ANÉCDOTAS INSÓLITAS</div>
+          <h2 class="section-title">Datos <span class="highlight-green">Curiosos</span> & Récords</h2>
+          <p class="section-subtitle">Momentos bizarros, marcas que desafían la lógica y sucesos que dejaron boquiabierto al mundo del fútbol.</p>
+        </div>
+
+        <div class="trivia-grid">
+          <!-- Curiosidad 1 -->
+          <div class="trivia-card">
+            <div class="trivia-icon-tag"><i class="fa-solid fa-stopwatch-20"></i></div>
+            <span class="trivia-number">01</span>
+            <h3>El gol más veloz de la historia: 2.8 segundos</h3>
+            <p>El delantero uruguayo <strong>Ricardo Olivera</strong> anotó en 1998 a los 2.8 segundos de juego con un zapatazo teledirigido directo al arco rival nada más oír el pitido del silbato inicial.</p>
+            <div class="trivia-badge"><i class="fa-solid fa-bolt"></i> Récord Guinness</div>
+          </div>
+
+          <!-- Curiosidad 2 -->
+          <div class="trivia-card">
+            <div class="trivia-icon-tag"><i class="fa-solid fa-dog"></i></div>
+            <span class="trivia-number">02</span>
+            <h3>Un perro rescató la Copa del Mundo robada</h3>
+            <p>En marzo de 1966, la Copa Jules Rimet fue robada en Londres. La policía británica estaba desesperada hasta que un perro de campo llamado <strong>Pickles</strong> la olfateó envuelta en periódicos bajo un arbusto.</p>
+            <div class="trivia-badge"><i class="fa-solid fa-shield-dog"></i> Pickles el Héroe</div>
+          </div>
+
+          <!-- Curiosidad 3 -->
+          <div class="trivia-card">
+            <div class="trivia-icon-tag"><i class="fa-solid fa-chart-line"></i></div>
+            <span class="trivia-number">03</span>
+            <h3>El partido con más goles: 149 a 0</h3>
+            <p>En Madagascar en 2002, el SO l'Emyrne protestó contra arbitrajes polémicos marcándose <strong>149 autogoles intencionados</strong> frente al AS Adema. Es el récord Guinness oficial de goles en un partido.</p>
+            <div class="trivia-badge"><i class="fa-solid fa-triangle-exclamation"></i> Récord Bizarro</div>
+          </div>
+
+          <!-- Curiosidad 4 -->
+          <div class="trivia-card">
+            <div class="trivia-icon-tag"><i class="fa-solid fa-globe"></i></div>
+            <span class="trivia-number">04</span>
+            <h3>El primer partido internacional: 0 - 0</h3>
+            <p>El 30 de noviembre de 1872 se jugó en Glasgow el primer choque entre selecciones de la historia: <strong>Escocia vs Inglaterra</strong>. Pese al fervor de 4,000 fanáticos, el encuentro finalizó en un pacífico 0-0.</p>
+            <div class="trivia-badge"><i class="fa-solid fa-scroll"></i> Año 1872</div>
+          </div>
+
+          <!-- Curiosidad 5 -->
+          <div class="trivia-card">
+            <div class="trivia-icon-tag"><i class="fa-solid fa-person-cane"></i></div>
+            <span class="trivia-number">05</span>
+            <h3>El jugador más longevo en un Mundial: 45 años</h3>
+            <p>El arquero egipcio <strong>Essam El-Hadary</strong> atajó en el Mundial de Rusia 2018 con <strong>45 años y 161 días</strong>. En ese partido, ¡detuvo un penal contra Arabia Saudita para despedirse por todo lo alto!</p>
+            <div class="trivia-badge"><i class="fa-solid fa-hourglass"></i> Longevidad Récord</div>
+          </div>
+
+          <!-- Curiosidad 6 -->
+          <div class="trivia-card">
+            <div class="trivia-icon-tag"><i class="fa-solid fa-volleyball"></i></div>
+            <span class="trivia-number">06</span>
+            <h3>Los primeros balones eran vejigas de cerdo</h3>
+            <p>Antes del cuero sintético y el termosellado, los primeros balones eran <strong>vejigas de cerdo infladas a pulmón</strong> recubiertas con correas de cuero crudo. Eran pesadísimas cuando llovía en el campo.</p>
+            <div class="trivia-badge"><i class="fa-solid fa-vial"></i> Evolución Balón</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN 7: MINI QUIZ FUTBOLERO INTERACTIVO (Con Audio & Confeti)
+         ==================================================================== -->
+    <section class="section quiz-section" id="quiz">
+      <div class="container">
+        <div class="quiz-wrapper">
+          <div class="quiz-header">
+            <div class="section-tag"><i class="fa-solid fa-gamepad"></i> DESAFÍO EN VIVO</div>
+            <h2 class="section-title">¿Cuál es tu <span class="highlight-green">IQ Futbolero</span>?</h2>
+            <p class="section-subtitle">Demuestra tus conocimientos tácticos e históricos. ¡Responde 5 preguntas y obtén tu título honorífico!</p>
+          </div>
+
+          <div class="quiz-card" id="quizCard">
+            <!-- Barra de progreso superior -->
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress-fill" id="quizProgress" style="width: 20%;"></div>
+            </div>
+            
+            <div class="quiz-meta-info">
+              <span id="quizStepText"><i class="fa-regular fa-circle-question text-green"></i> Pregunta 1 de 5</span>
+              <span class="quiz-score-badge" id="quizScoreBadge"><i class="fa-solid fa-star text-yellow"></i> Puntos: 0</span>
+            </div>
+
+            <!-- Pregunta actual -->
+            <div class="quiz-question-box">
+              <h3 id="quizQuestion">Cargando pregunta...</h3>
+            </div>
+
+            <!-- Opciones interactivas -->
+            <div class="quiz-options-grid" id="quizOptions">
+              <!-- Renderizado por script.js -->
+            </div>
+
+            <!-- Retroalimentación con explicación -->
+            <div class="quiz-feedback" id="quizFeedback" style="display: none;"></div>
+
+            <!-- Botón Siguiente -->
+            <div class="quiz-actions">
+              <button class="btn btn-primary" id="quizNextBtn" style="display: none;">
+                Siguiente Pregunta <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Pantalla de Resultados Finales con Confeti -->
+          <div class="quiz-result-card" id="quizResult" style="display: none;">
+            <div class="result-trophy-icon"><i class="fa-solid fa-trophy"></i></div>
+            <h3 id="resultTitleText">¡Evaluación Completada!</h3>
+            <p class="result-score" id="resultScoreText">Acertaste 5 de 5 preguntas</p>
+            <p class="result-description" id="resultDescText">¡Eres un erudito indiscutible del fútbol mundial!</p>
+            
+            <div class="quiz-result-actions">
+              <button class="btn btn-primary" id="quizRestartBtn">
+                <i class="fa-solid fa-rotate-right"></i> Volver a Jugar
+              </button>
+              <a href="#posiciones" class="btn btn-secondary">
+                <i class="fa-solid fa-futbol"></i> Ir a la Cancha Táctica
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         BANNER CALL TO ACTION & NEWSLETTER
+         ==================================================================== -->
+    <section class="cta-banner">
+      <div class="container cta-container">
+        <div class="cta-text">
+          <h2><i class="fa-solid fa-futbol text-green"></i> ¡Únete a la Hinchada Digital de Mundo Fútbol!</h2>
+          <p>Recibe análisis tácticos semanales, resúmenes de ligas europeas y datos insólitos directo a tu bandeja.</p>
+        </div>
+        <form class="cta-form" id="newsletterForm">
+          <input type="email" id="newsletterEmail" placeholder="Tu correo electrónico..." required aria-label="Correo para newsletter">
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-paper-plane"></i> Suscribirme
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+         BARRA FLOTANTE MÓVIL INFERIOR (Mobile Bottom Dock para Celular)
+         ==================================================================== -->
+  <nav class="mobile-bottom-dock" id="mobileBottomDock" aria-label="Navegación rápida en celular">
+    <a href="#hero" class="dock-item active">
+      <i class="fa-solid fa-house"></i>
+      <span>Inicio</span>
+    </a>
+    <a href="#posiciones" class="dock-item">
+      <i class="fa-solid fa-futbol"></i>
+      <span>Cancha</span>
+    </a>
+    <a href="#jugadores" class="dock-item">
+      <i class="fa-solid fa-star"></i>
+      <span>Estrellas</span>
+    </a>
+    <a href="#equipos" class="dock-item">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>Clubes</span>
+    </a>
+    <a href="#quiz" class="dock-item">
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Quiz</span>
+    </a>
+  </nav>
+
+  <!-- ====================================================================
+         PIE DE PÁGINA (Footer Completo)
+         ==================================================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <span class="logo-icon"><i class="fa-solid fa-futbol"></i></span>
+          <span class="brand-text">MUNDO<span>FÚTBOL</span></span>
+        </div>
+        <p class="footer-desc">
+          El portal definitivo para apasionados del fútbol. Estrategia, táctica, historia viva, estrellas globales y el latido del deporte más seguido del planeta.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram de Mundo Fútbol"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok de Mundo Fútbol"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube de Mundo Fútbol"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Twitter X de Mundo Fútbol"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul class="footer-links">
+          <li><a href="#hero"><i class="fa-solid fa-chevron-right"></i> Portada Principal</a></li>
+          <li><a href="#historia"><i class="fa-solid fa-chevron-right"></i> Línea de Tiempo Histórica</a></li>
+          <li><a href="#reglas"><i class="fa-solid fa-chevron-right"></i> Reglamento IFAB & Medidas</a></li>
+          <li><a href="#posiciones"><i class="fa-solid fa-chevron-right"></i> Pizarra Táctica 4-3-3 / 4-4-2</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Especiales</h4>
+        <ul class="footer-links">
+          <li><a href="#jugadores"><i class="fa-solid fa-chevron-right"></i> Cartas OVR de Jugadores</a></li>
+          <li><a href="#equipos"><i class="fa-solid fa-chevron-right"></i> Templos & Clubes Legendarios</a></li>
+          <li><a href="#curiosidades"><i class="fa-solid fa-chevron-right"></i> Datos Curiosos & Guinness</a></li>
+          <li><a href="#quiz"><i class="fa-solid fa-chevron-right"></i> Mini Quiz Interactivo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col quote-col">
+        <h4>Frase Eterna</h4>
+        <blockquote class="footer-quote">
+          "El fútbol es el arte de hacer fácil lo difícil y de unir a millones de corazones en un solo grito de gol."
+        </blockquote>
+        <span class="quote-author">— Tradición Futbolera</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container bottom-row">
+        <p>© 2026 <strong>Mundo Fútbol</strong>. Diseñado con pasión en verde, blanco y negro. Optimizado para computadora y celular.</p>
+        <a href="#hero" class="back-to-top" id="backToTop" aria-label="Volver arriba">
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lógica Interactiva en JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
